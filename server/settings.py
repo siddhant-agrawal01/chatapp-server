@@ -106,6 +106,7 @@ CHANNEL_LAYERS = {
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://chat-frt-app.vercel.app"
 ]
 
 # Password validation
