@@ -15,7 +15,9 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    print("✅ Django server is starting...")
     execute_from_command_line(sys.argv)
+    print("✅ Django server is running!")
 
 
 if __name__ == '__main__':
