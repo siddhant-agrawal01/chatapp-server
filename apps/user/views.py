@@ -1,3 +1,4 @@
+import logging
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.generics import CreateAPIView, ListAPIView
 from rest_framework.pagination import LimitOffsetPagination
@@ -6,6 +7,10 @@ from apps.user.models import User
 from apps.user.serializers import (
 	UserSerializer, LoginSerializer, SignupSerializer
 )
+from rest_framework.response import Response
+from rest_framework import status
+
+logger = logging.getLogger(__name__)
 
 class UserView(ListAPIView):
 	queryset = User.objects.all().order_by('first_name')
@@ -32,3 +37,29 @@ class SignupApiView(CreateAPIView):
 	permission_classes = [AllowAny]
 	queryset = User.objects.all()
 	serializer_class = SignupSerializer
+
+	def create(self, request, *args, **kwargs):
+		logger.info("Received signup request")
+		logger.debug(f"Request data: {request.data}")
+		
+		serializer = self.get_serializer(data=request.data)
+		if not serializer.is_valid():
+			logger.error(f"Validation errors: {serializer.errors}")
+			return Response(
+				serializer.errors,
+				status=status.HTTP_400_BAD_REQUEST
+			)
+		
+		try:
+			self.perform_create(serializer)
+			logger.info("User created successfully")
+			return Response(
+				serializer.data,
+				status=status.HTTP_201_CREATED
+			)
+		except Exception as e:
+			logger.error(f"Error during signup: {str(e)}")
+			return Response(
+				{"error": str(e)},
+				status=status.HTTP_400_BAD_REQUEST
+			)
