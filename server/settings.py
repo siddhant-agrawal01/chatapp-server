@@ -107,12 +107,29 @@ CHANNEL_LAYERS = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://chat-frt-app.vercel.app",
-    "https://www.chat-frt-app.vercel.app",
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://chat-frt-app.vercel.app",
+#     "https://www.chat-frt-app.vercel.app",
+# ]
+
+# Optional: Allow all HTTP methods (default is GET, POST, etc.)
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
 ]
 
+# Optional: Allow specific headers
+CORS_ALLOW_HEADERS = [
+    "content-type",
+    "authorization",
+    "x-csrftoken",
+    "x-requested-with",
+]
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
