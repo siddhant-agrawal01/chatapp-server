@@ -94,8 +94,8 @@ DATABASES = {
     'default': dj_database_url.config(
         default='postgresql://neondb_owner:VCdgQH4AU0ti@ep-super-lab-a1e4obie.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',  # Replace this with your Neon URI
         conn_max_age=600,  # Keeps the connection alive for better performance
-   
-     ssl_require=True )
+        ssl_require=True
+          )
 }
 
 CHANNEL_LAYERS = {
