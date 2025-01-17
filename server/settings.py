@@ -107,11 +107,13 @@ CHANNEL_LAYERS = {
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "https://chat-frt-app.vercel.app",
-#     "https://www.chat-frt-app.vercel.app",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://chat-frt-app.vercel.app",
+    "https://www.chat-frt-app.vercel.app",
+    'chatapp-server-67qd.onrender.com',
+
+]
 
 # Optional: Allow all HTTP methods (default is GET, POST, etc.)
 CORS_ALLOW_METHODS = [
