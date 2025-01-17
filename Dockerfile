@@ -5,6 +5,8 @@ FROM python:3.11-slim-buster
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND=noninteractive
+ENV DJANGO_SETTINGS_MODULE=server.settings  # Added here
+
 
 # Set the working directory
 WORKDIR /app
@@ -38,4 +40,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/ || exit 1
 
 # Run Daphne as the default command
-CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "server.asgi:application"]
+CMD ["sh", "-c", "DJANGO_SETTINGS_MODULE=server.settings daphne -b 0.0.0.0 -p 8000 server.asgi:application"]
