@@ -111,9 +111,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://chat-frt-app.vercel.app",
     "https://www.chat-frt-app.vercel.app",
-    'chatapp-server-67qd.onrender.com',
-
+    "https://chatapp-server-67qd.onrender.com",  # Added the scheme
 ]
+
 
 # Optional: Allow all HTTP methods (default is GET, POST, etc.)
 CORS_ALLOW_METHODS = [
