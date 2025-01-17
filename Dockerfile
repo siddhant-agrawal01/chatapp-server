@@ -5,7 +5,7 @@ FROM python:3.11-slim-buster
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBIAN_FRONTEND=noninteractive
-ENV DJANGO_SETTINGS_MODULE=server.settings  # Added here
+ENV DJANGO_SETTINGS_MODULE=server.settings  
 
 
 # Set the working directory
