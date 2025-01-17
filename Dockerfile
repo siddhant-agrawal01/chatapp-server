@@ -32,8 +32,9 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # Copy project files
 COPY --chown=appuser:appuser . .
 
-# Create directory for static files and media
-RUN mkdir -p /app/static /app/media
+# Collect static files
+RUN mkdir -p /app/static /app/media && \
+    python manage.py collectstatic --noinput
 
 # Expose port
 EXPOSE 8000
@@ -43,4 +44,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/ || exit 1
 
 # Set default command
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "server.asgi:application"]

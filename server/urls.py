@@ -19,8 +19,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
+        path("", lambda request: JsonResponse({"message": "Welcome to the API"})),
+
     path('admin/', admin.site.urls),
     path('api/v1/', include('apps.user.urls')),
     path('api/v1/', include('apps.chat.urls')),
 ]
+
+from django.http import JsonResponse
+
+
+
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
