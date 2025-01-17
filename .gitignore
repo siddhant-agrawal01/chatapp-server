@@ -30,9 +30,7 @@ ENV/
 env.bak/
 venv.bak/
 
-# Docker
-Dockerfile
-docker-compose.yml
+
 
 # IDEs
 .idea/
